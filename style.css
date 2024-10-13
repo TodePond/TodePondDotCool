@@ -84,6 +84,7 @@ code {
 
 * {
   accent-color: #4680ff;
+  box-sizing: border-box;
 }
 
 body {
