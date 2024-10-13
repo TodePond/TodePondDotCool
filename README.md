@@ -1,4 +1,4 @@
 # TodePondDotCool
 the cooler todepond
 
-[flok](/flok)! <- leave me something here
+[flok](https://todepond.cool/flok)! <- leave me something here
