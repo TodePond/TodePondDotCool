@@ -1,4 +1,4 @@
 # TodePondDotCool
-the cooler todepond
+the cooler [todepond](https://todepond.com)
 
-[flok](https://todepond.cool/flok)! <- leave me something here
+[flok](https://todepond.cool/flok) <- leave me something here
