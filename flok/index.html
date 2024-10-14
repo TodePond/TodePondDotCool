@@ -42,29 +42,103 @@
     left: 0px;
     width: calc(100% - 0px);
     height: calc(100% - 0px);
-    display:flex;
+    display: flex;
     flex-direction: column;
-    
+
     /* border: none; */
   }
 
   header {
     max-width: 100%;
-    overflow-x: auto;
     font-size: 14px;
-    
   }
 
   iframe {
     border: none;
     flex-grow: 1;
   }
+
+  /* fade out animation */
+  .fade-out {
+    animation: fade-out 1s forwards;
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* fade in animation */
+  .fade-in {
+    animation: fade-in 1s forwards;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 </style>
 
 <main>
-<header>normalise sharing scrappy fiddles</header>
-<iframe
-  sandbox="allow-scripts allow-same-origin allow-forms"
-  src="https://flok.cc/s/todepond">
-</iframe>
+  <header><marquee>&nbsp;</marquee></header>
+  <iframe
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    src="https://flok.cc/s/todepond">
+  </iframe>
 </main>
+
+<script type="module">
+  const mantras = [
+    "normalise sharing scrappy fiddles",
+    'support the lovely flok author <a href="https://ko-fi.com/munshkr/">here</a> <3',
+    "recording and sharing is encouraged",
+    "embrace death",
+    "fun can work",
+    'this is a sandboxed public <a href="https://flok.cc">flok</a> room',
+  ];
+
+  const MANTRA_INTERVAL = 60 * 1000;
+  const MANTRA_UPDATE_INTERVAL = 5 * 1000;
+  const startingTime = new Date();
+  const startingMantraIndex =
+    Math.floor(startingTime / MANTRA_INTERVAL) % mantras.length;
+  const startingMantra = mantras[startingMantraIndex];
+
+  const header = document.querySelector("header");
+  const marquee = document.querySelector("marquee");
+  marquee.innerHTML = startingMantra;
+  console.log(startingMantra);
+
+  let activeMantra = startingMantra;
+
+  const FADE_TIME = 1000;
+  setInterval(() => {
+    const currentTime = new Date();
+    const currentMantraIndex =
+      Math.floor(currentTime / MANTRA_INTERVAL) % mantras.length;
+    const currentMantra = mantras[currentMantraIndex];
+
+    if (currentMantra === activeMantra) {
+      return;
+    }
+
+    // fade out header, then update text, then fade in
+    header.classList.add("fade-out");
+    setTimeout(() => {
+      marquee.innerHTML = currentMantra;
+      header.classList.remove("fade-out");
+      header.classList.add("fade-in");
+      setTimeout(() => {
+        header.classList.remove("fade-in");
+      }, FADE_TIME);
+    }, FADE_TIME);
+  }, MANTRA_UPDATE_INTERVAL);
+</script>
