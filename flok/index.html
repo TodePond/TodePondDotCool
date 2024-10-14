@@ -132,13 +132,13 @@
     }
 
     // fade out header, then update text, then fade in
-    header.classList.add("fade-out");
+    marquee.classList.add("fade-out");
     setTimeout(() => {
       marquee.innerHTML = currentMantra;
-      header.classList.remove("fade-out");
-      header.classList.add("fade-in");
+      marquee.classList.remove("fade-out");
+      marquee.classList.add("fade-in");
       setTimeout(() => {
-        header.classList.remove("fade-in");
+        marquee.classList.remove("fade-in");
       }, FADE_TIME);
     }, FADE_TIME);
   }, MANTRA_UPDATE_INTERVAL);
