@@ -205,7 +205,8 @@
 <script type="module">
   const reloadButton = document.getElementById("reload-button");
   reloadButton.addEventListener("click", () => {
-    window.location.reload();
+    // reload with the ?skip query to skip the welcome dialog
+    window.location.search = "skip";
   });
 
   const mcplantButton = document.getElementById("mcplant-button");
@@ -278,12 +279,26 @@
   const iframe = document.querySelector("iframe");
   const coolButton = document.getElementById("cool-button");
   const dialogHolder = document.querySelector(".dialog-holder");
-  coolButton.addEventListener("click", () => {
+
+  const urlQuery = new URLSearchParams(window.location.search);
+  const skipQuery = urlQuery.has("skip");
+  if (skipQuery) {
+    closeWelcomeDialog();
+    // remove the query from the URL
+    // use a timeout so it doesnt flicker
+    setTimeout(() => {
+      window.history.replaceState({}, document.title, "/flok");
+    }, 1000);
+  }
+
+  function closeWelcomeDialog() {
     document.getElementById("key-information").close();
     iframe.style.display = "block";
     dialogHolder.style.display = "none";
     iframe.focus();
-  });
+  }
+
+  coolButton.addEventListener("click", closeWelcomeDialog);
 
   dialogHolder.addEventListener("click", (e) => {
     if (e.target !== dialogHolder) {
