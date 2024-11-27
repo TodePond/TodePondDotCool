@@ -403,6 +403,8 @@ button {
   font-size: 1em;
   cursor: pointer;
   user-select: none;
+  background-color: var(--shade-10);
+  color: black;
 }
 
 button:disabled {

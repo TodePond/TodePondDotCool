@@ -40,6 +40,14 @@
     box-sizing: border-box;
   }
 
+  html {
+    background-color: black;
+  }
+
+  body {
+    background-color: black;
+  }
+
   main {
     position: fixed;
     top: 0px;
@@ -57,6 +65,7 @@
     font-size: 14px;
     opacity: 1;
     display: flex;
+    background-color: rgb(31, 39, 54);
   }
 
   iframe {
@@ -129,19 +138,24 @@
   <header>
     <details class="burger-menu">
       <summary><span>☰</span></summary>
-      <ul
+      <div
         style="
-          margin-bottom: 6px;
-          margin-top: 4px;
-          margin-right: 8px;
-          margin-left: 4px;
+          padding: 4px;
+          position: fixed;
+          background-color: rgb(31, 39, 54);
+          display: flex;
+          flex-direction: column;
         ">
-        <li>McPlant</li>
+        <button id="reload-button">🔄 Reload</button>
+        <button id="mcplant-button">🍔 McPlant</button>
+        <!-- ⟳ <li>McPlant</li>
         <li>Linda McCartney</li>
-        <li>Beyond</li>
-      </ul>
+        <li>Beyond</li> -->
+      </div>
     </details>
-    <marquee scrollamount="3">&nbsp;</marquee>
+    <marquee style="position: absolute" scrollamount="3" class="fade-in"
+      >&nbsp;</marquee
+    >
   </header>
   <iframe
     sandbox="allow-scripts allow-same-origin allow-forms"
@@ -150,6 +164,16 @@
 </main>
 
 <script type="module">
+  const reloadButton = document.getElementById("reload-button");
+  reloadButton.addEventListener("click", () => {
+    window.location.reload();
+  });
+
+  const mcplantButton = document.getElementById("mcplant-button");
+  mcplantButton.addEventListener("click", () => {
+    alert("You eat the McPlant. It tastes just like a regular burger.");
+  });
+
   const mantras = [
     'this is a public <a href="https://flok.cc">flok</a> room',
     "press ctrl + enter to run code",
@@ -184,7 +208,6 @@
   const header = document.querySelector("header");
   const marquee = document.querySelector("marquee");
   marquee.innerHTML = startingMantra;
-  console.log(startingMantra);
 
   let activeMantra = startingMantra;
 
