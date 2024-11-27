@@ -143,6 +143,10 @@
     justify-content: center;
     align-items: center;
   }
+
+  details button {
+    text-align: left;
+  }
 </style>
 
 <main>
@@ -158,6 +162,7 @@
           flex-direction: column;
         ">
         <button id="reload-button">🔄 Reload</button>
+        <button id="about-button">ℹ️ About</button>
         <button id="mcplant-button">🍔 McPlant</button>
         <!-- ⟳ <li>McPlant</li>
         <li>Linda McCartney</li>
@@ -208,6 +213,7 @@
 
   const mcplantButton = document.getElementById("mcplant-button");
   mcplantButton.addEventListener("click", () => {
+    closeBurgerMenu();
     alert("You eat the McPlant. It tastes just like a regular burger.");
   });
 
@@ -288,11 +294,35 @@
     }, 1000);
   }
 
+  const aboutButton = document.getElementById("about-button");
+  aboutButton.addEventListener("click", () => {
+    closeBurgerMenu();
+    openWelcomeDialog();
+  });
+
+  function openWelcomeDialog() {
+    document.getElementById("key-information").showModal();
+    iframe.style.display = "none";
+    dialogHolder.style.display = "flex";
+    coolButton.focus();
+  }
+
   function closeWelcomeDialog() {
     document.getElementById("key-information").close();
     iframe.style.display = "block";
     dialogHolder.style.display = "none";
     iframe.focus();
+  }
+
+  addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeWelcomeDialog();
+    }
+  });
+
+  function closeBurgerMenu() {
+    const details = document.querySelector(".burger-menu");
+    details.removeAttribute("open");
   }
 
   coolButton.addEventListener("click", closeWelcomeDialog);
@@ -301,6 +331,7 @@
     if (e.target !== dialogHolder) {
       return;
     }
-    coolButton.focus();
+    // coolButton.focus();
+    closeWelcomeDialog();
   });
 </script>
