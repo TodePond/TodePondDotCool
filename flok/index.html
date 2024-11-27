@@ -132,6 +132,17 @@
     padding: 0px;
     /* height: 2000px; */
   }
+
+  .dialog-holder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
 
 <main>
@@ -158,10 +169,38 @@
     >
   </header>
   <iframe
+    style="display: none"
     sandbox="allow-scripts allow-same-origin allow-forms"
     src="https://flok.cc/s/todepond">
   </iframe>
 </main>
+
+<article class="dialog-holder">
+  <dialog open id="key-information">
+    <h2>welcome to pastagang!</h2>
+    <p>
+      this is a public <a href="https://flok.cc">flok</a> room hosted by
+      <a href="https://todepond.com">todepond</a>.
+    </p>
+    <p>
+      flok is a collaborative environment made by
+      <a href="https://github.com/munshkr">munshkr</a>. please support them on
+      <a href="https://ko-fi.com/munshkr">their kofi</a>.
+    </p>
+    <p><strong>press alt + enter to run code.</strong></p>
+    <p>
+      check out the
+      <a
+        href="https://www.youtube.com/playlist?list=PL9uRa69RF-7wOS5CnK0wy34t5HYgFLIng"
+        >pastagang playlist</a
+      >
+      for some past recordings.
+    </p>
+    <form method="dialog">
+      <button id="cool-button" autofocus>cool</button>
+    </form>
+  </dialog>
+</article>
 
 <script type="module">
   const reloadButton = document.getElementById("reload-button");
@@ -235,4 +274,21 @@
       }, FADE_TIME);
     }, FADE_TIME);
   }, MANTRA_UPDATE_INTERVAL);
+
+  const iframe = document.querySelector("iframe");
+  const coolButton = document.getElementById("cool-button");
+  const dialogHolder = document.querySelector(".dialog-holder");
+  coolButton.addEventListener("click", () => {
+    document.getElementById("key-information").close();
+    iframe.style.display = "block";
+    dialogHolder.style.display = "none";
+    iframe.focus();
+  });
+
+  dialogHolder.addEventListener("click", (e) => {
+    if (e.target !== dialogHolder) {
+      return;
+    }
+    coolButton.focus();
+  });
 </script>

@@ -102,6 +102,10 @@ video {
   width: 100%;
 }
 
+dialog a {
+  color: black;
+}
+
 a {
   color: #46ff80;
 }
@@ -221,8 +225,16 @@ summary.button:hover {
   /* transform: scale(1.1); */
 }
 
+dialog {
+  max-width: 400px;
+}
+
 dialog h2 {
   margin: 0px;
+}
+
+button:focus {
+  outline: 2px solid #4680ff;
 }
 
 dialog input[type="password"],
@@ -240,7 +252,9 @@ dialog textarea {
 
 dialog::selection,
 dialog p::selection,
-dialog h2::selection {
+dialog strong::selection,
+dialog h2::selection,
+dialog a::selection {
   background-color: #46ff80;
 }
 
@@ -405,6 +419,14 @@ button {
   user-select: none;
   background-color: var(--shade-10);
   color: black;
+}
+
+button:hover {
+  background-color: #46ff80;
+}
+
+summary:hover {
+  background-color: black;
 }
 
 button:disabled {
