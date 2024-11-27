@@ -36,6 +36,10 @@
 </header>
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   main {
     position: fixed;
     top: 0px;
@@ -52,6 +56,7 @@
     max-width: 100%;
     font-size: 14px;
     opacity: 1;
+    display: flex;
   }
 
   iframe {
@@ -86,10 +91,58 @@
       opacity: 1;
     }
   }
+
+  .burger-menu {
+    flex-shrink: 0;
+    background-color: rgb(55, 67, 98);
+    z-index: 1000;
+  }
+
+  .burger-menu summary::marker {
+    content: none;
+  }
+
+  .burger-menu summary {
+    cursor: pointer;
+    padding: 0px 5px;
+    /* color: white; */
+    /* font-size: 20px; */
+    line-height: 14px;
+    /* font-size: 12px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .burger-menu summary span {
+    position: relative;
+    top: -1px;
+  }
+
+  .burger-menu-inner {
+    padding: 0px;
+    /* height: 2000px; */
+  }
 </style>
 
 <main>
-  <header><marquee scrollamount="3">&nbsp;</marquee></header>
+  <header>
+    <details class="burger-menu">
+      <summary><span>☰</span></summary>
+      <ul
+        style="
+          margin-bottom: 6px;
+          margin-top: 4px;
+          margin-right: 8px;
+          margin-left: 4px;
+        ">
+        <li>McPlant</li>
+        <li>Linda McCartney</li>
+        <li>Beyond</li>
+      </ul>
+    </details>
+    <marquee scrollamount="3">&nbsp;</marquee>
+  </header>
   <iframe
     sandbox="allow-scripts allow-same-origin allow-forms"
     src="https://flok.cc/s/todepond">
