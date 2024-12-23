@@ -1,7 +1,9 @@
 # TodePondDotCool
 
-the cooler [todepond](https://todepond.com)
+the cooler todepond
+
+you're probably here for this:
 
 <br>
 
-[flok](https://todepond.cool/flok) <- leave me something here
+[pastagang](https://todepond.cool/flok) <- leave me something here
