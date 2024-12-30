@@ -2,8 +2,8 @@
 
 the cooler todepond
 
-you're probably here for this:
+i use this domain when i'm doing unsafe experimental stuff so there's no risk of cross-site-scripting on my [main site](https://todepond.com) lol
 
 <br>
 
-[pastagang](https://todepond.cool/flok) <- leave me something here
+you're probably here for [pastagang](http://pastagang.cc) though!
