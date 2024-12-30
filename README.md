@@ -6,4 +6,4 @@ i use this domain when i'm doing unsafe experimental stuff so there's no risk of
 
 <br>
 
-you're probably here for [pastagang](http://pastagang.cc) though!
+you're probably here for [pastagang](https://pastagang.cc) though!
